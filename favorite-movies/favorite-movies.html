@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../index.css" />
+    <link rel="stylesheet" type="text/css" href="favorite-movies.css" />
+    <script type="text/javascript" src="../index.js"></script>
+    <script type="text/javascript" src="favorite-movies.js"></script>
+
+    <title>
+        Favorite movies
+    </title>
+</head>
+
+<body>
+    <b>
+        <h1>Consiglia un film</h1>
+        <h2>Imposta le caratteristiche del film che desideri consigliare</h2>
+    </b>
+
+    <br>
+
+    <form name="favoriteMoviesForm" action="./request-add-movie/request-add-movie.php"
+        onsubmit="return validateFavoriteMoviesForm()" method="GET">
+        <div id="container">
+            <strong><label>Inserisci il tuo nome o un tuo identificativo:</label></strong><br>
+            <input type="text" name="nickname"></input>
+
+            <br><br><br>
+
+            <strong><label>Inserisci il titolo:</label></strong><br>
+            <input type="text" name="title"></input>
+
+            <br><br><br>
+
+            <strong><label for="type">Scegli la categoria:</label></strong>
+            <select name="type" id="type">
+                <optgroup label="Categoria">
+                    <option value="Animazione">Animazione</option>
+                    <option value="Avventura">Avventura</option>
+                    <option value="Biografico">Biografico</option>
+                    <option value="Comico">Comico</option>
+                    <option value="Commedia">Commedia</option>
+                    <option value="Drammatico">Drammatico</option>
+                    <option value="Erotico">Erotico</option>
+                    <option value="Fantascienza">Fantascienza</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Giallo">Giallo</option>
+                    <option value="Guerra">Guerra</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Musicale">Musicale</option>
+                    <option value="Politico-sociale">Politico-sociale</option>
+                    <option value="Sentimentale">Sentimentale</option>
+                    <option value="Sportivo">Sportivo</option>
+                    <option value="Storico">Storico</option>
+                    <option value="Western">Western</option>
+                </optgroup>
+            </select>
+
+            <br><br><br>
+
+            <strong><label for="year">Scegli l'anno:</label></strong>
+            <select name="year" id="year">
+                <optgroup label="Anno">
+                    <option value="'80-'90">'80-'90</option>
+                    <option value="'90-2000">'90-2000</option>
+                    <option value="2000-2010">2000-2010</option>
+                    <option value="2010-2020">2010-2020</option>
+                    <option value="Dopo il 2020">Dopo il 2020</option>
+                    <option value="Ultimi">Ultimi</option>
+                </optgroup>
+            </select>
+
+            <br><br><br>
+
+            <strong><label for="country">Scegli il paese di produzione:</label></strong>
+            <select name="country" id="country">
+                <optgroup label="Paese">
+                    <option value="italiano">Italiano</option>
+                    <option value="straniero">Straniero</option>
+                </optgroup>
+            </select>
+
+            <br><br><br>
+
+            <strong><label>Inserisci uno o più attori (attore 1, attore 2, ...):</label></strong><br>
+            <input type="text" name="actors"></input>
+        </div>
+
+        <br><br><br>
+
+        <div class="center">
+            <button type="button" onclick="goHome()">
+                Indietro
+            </button>
+
+            <button type="submit" value="Submit">
+                Continua</button>
+        </div>
+    </form>
+</body>
+
+</html>

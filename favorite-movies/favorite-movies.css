@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+h2 {
+    color: white;
+}
+
+label {
+    font-size: large;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: system-ui;
+    outline: 0;
+    background: #ff6a6a;
+    color: #fff;
+    border: 1px solid crimson;
+    padding: 4px;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: system-ui;
+    outline: 0;
+    background: #ff6a6a;
+    color: #fff;
+    border: 1px solid crimson;
+    padding: 4px;
+}
+
+.center {
+    text-align: center;
+}
