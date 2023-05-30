@@ -35,3 +35,7 @@ input {
 .center {
     text-align: center;
 }
+
+#seasons {
+    display: none;
+}

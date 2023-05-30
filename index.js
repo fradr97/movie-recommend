@@ -1,4 +1,4 @@
-const BASE_URL = 'http://fradr.altervista.org/movie-recommend/';
+const BASE_URL = 'http://localhost/movie-recommend/';   // http://fradr.altervista.org/
 
 function goHome() {
     window.location.href = BASE_URL + 'home/home.html';

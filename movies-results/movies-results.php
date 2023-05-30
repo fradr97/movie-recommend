@@ -22,7 +22,7 @@ function getMoviesResults()
     $country = $_GET['country'];
     $actors = $_GET['actors'];
 
-    $moviesQuery = "SELECT title, type, year, country, actors, duration " .
+    $moviesQuery = "SELECT * " .
         "FROM  movies " .
         "WHERE waiting = 1 AND type LIKE CONCAT('%',?,'%') AND " .
         "year LIKE CONCAT('%',?,'%') AND country LIKE CONCAT('%',?,'%') ";
@@ -90,9 +90,16 @@ function getMoviesResults()
                 echo '<p>Mi dispiace, non è presente alcun film con i parametri specificati!</p>';
             } else {
                 while ($row = $movies->fetch_assoc()) {
-                    echo '<li onclick="openMovieUrl(\'' . $row['title'] . '\')">' .
+                    $result = '<li onclick="openMovieUrl(\'' . $row['title'] . '\')">' .
                         '<span>' . $row['title'] . '</span>' .
-                        '<span>' . $row['type'] . ' - ' . $row['year'] . ' - ' .
+                        '<span>Tipo: ' . $row['type'];
+                    
+                        if ($row['seasons'] != null && $row['episodes'] != null) {
+                            $result = $result . ' - Stagioni: ' . $row['seasons'] .
+                                ' - Episodi per stagione: ' . $row['episodes'];
+                        }
+                        
+                        echo $result . '<br />Anno: ' . $row['year'] . ' - Durata: ' .
                         $row['duration'] . ' min circa</span>' .
                         '</li>';
                 }

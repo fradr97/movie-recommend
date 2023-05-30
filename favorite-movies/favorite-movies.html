@@ -36,7 +36,7 @@
             <br><br><br>
 
             <strong><label for="type">Scegli la categoria:</label></strong>
-            <select name="type" id="type">
+            <select id="type" name="type" onchange = "showHideSeasons()">
                 <optgroup label="Categoria">
                     <option value="Animazione">Animazione</option>
                     <option value="Avventura">Avventura</option>
@@ -53,6 +53,7 @@
                     <option value="Musicale">Musicale</option>
                     <option value="Politico-sociale">Politico-sociale</option>
                     <option value="Sentimentale">Sentimentale</option>
+                    <option value="Serie">Serie</option>
                     <option value="Sportivo">Sportivo</option>
                     <option value="Storico">Storico</option>
                     <option value="Western">Western</option>
@@ -82,6 +83,23 @@
                     <option value="straniero">Straniero</option>
                 </optgroup>
             </select>
+
+            <br><br><br>
+
+            <div id="seasons">
+                <strong><label>Numero stagioni della serie:</label></strong><br>
+                <input type="number" name="seasons"></input>
+            
+                <br><br><br>
+                
+                <strong><label>Numero di episodi per stagione:</label></strong><br>
+                <input type="number" name="episodes"></input>
+                
+                <br><br><br>
+            </div>
+
+            <strong><label>Durata del film o dell'episodio di una serie (minuti):</label></strong><br>
+            <input type="number" name="duration"></input>
 
             <br><br><br>
 

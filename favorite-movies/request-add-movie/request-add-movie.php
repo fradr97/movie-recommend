@@ -12,6 +12,9 @@ function newMoviesRequest()
     $type = $_GET['type'];
     $year = $_GET['year'];
     $country = $_GET['country'];
+    $duration = $_GET['duration'];
+    $seasons = $_GET['seasons'];
+    $episodes = $_GET['episodes'];
     $actors = $_GET['actors'];
 
     $paragrap = 'Errore nella richiesta! Ricontrolla i campi inseriti e ripeti l\'operazione.';
@@ -20,27 +23,51 @@ function newMoviesRequest()
         strlen($nickname) < 1 || strlen($nickname) > 20 ||
         strlen($title) < 1 || strlen($title) > 60 ||
         strlen($type) == '' || strlen($year) == '' || strlen($country) == '' ||
-        strlen($actors) < 1 || strlen($actors) > 200
+        strlen($duration) == '' || strlen($duration) < 1 || strlen($duration) > 1000 ||
+        strlen($actors) < 1 || strlen($actors) > 200 ||
+        ($type == "Serie" && ($seasons == '' || $seasons < 1 || $seasons > 100 ||
+        $episodes == '' || $episodes < 1 || $episodes > 1000))
     ) {
         return $paragrap;
     }
 
     $waiting = 0; // the movie is waiting to be approved
 
-    $moviesQuery = "INSERT INTO movies " .
-        "(title, type, year, country, actors, waiting)" .
-        " VALUES (?, ?, ?, ?, ?, ?)";
+    if ($seasons != '' || $episodes != '') {
+        $moviesQuery = "INSERT INTO movies " .
+        "(title, type, year, country, actors, duration, seasons, episodes, waiting)" .
+        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $stmt = $db->prepare($moviesQuery);
-    $stmt->bind_param(
-        "sssssi",
-        $title,
-        $type,
-        $year,
-        $country,
-        $actors,
-        $waiting
-    );
+        $stmt = $db->prepare($moviesQuery);
+        $stmt->bind_param(
+            "sssssiiii",
+            $title,
+            $type,
+            $year,
+            $country,
+            $actors,
+            $duration,
+            $seasons,
+            $episodes,
+            $waiting
+        );
+    } else {
+        $moviesQuery = "INSERT INTO movies " .
+        "(title, type, year, country, actors, duration, waiting)" .
+        " VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $db->prepare($moviesQuery);
+        $stmt->bind_param(
+            "sssssii",
+            $title,
+            $type,
+            $year,
+            $country,
+            $actors,
+            $duration,
+            $waiting
+        );
+    }
     $stmt->execute();
 
     $lastId = $db->insert_id;
