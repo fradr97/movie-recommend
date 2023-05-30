@@ -1,6 +1,6 @@
 <?php
 
-include_once './../../config/database.php';
+include_once './../config/database.php';
 
 function newMoviesRequest()
 {
@@ -26,7 +26,7 @@ function newMoviesRequest()
         strlen($duration) == '' || strlen($duration) < 1 || strlen($duration) > 1000 ||
         strlen($actors) < 1 || strlen($actors) > 200 ||
         ($type == "Serie" && ($seasons == '' || $seasons < 1 || $seasons > 100 ||
-        $episodes == '' || $episodes < 1 || $episodes > 1000))
+            $episodes == '' || $episodes < 1 || $episodes > 1000))
     ) {
         return $paragrap;
     }
@@ -35,8 +35,8 @@ function newMoviesRequest()
 
     if ($seasons != '' || $episodes != '') {
         $moviesQuery = "INSERT INTO movies " .
-        "(title, type, year, country, actors, duration, seasons, episodes, waiting)" .
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            "(title, type, year, country, actors, duration, seasons, episodes, waiting)" .
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $db->prepare($moviesQuery);
         $stmt->bind_param(
@@ -53,8 +53,8 @@ function newMoviesRequest()
         );
     } else {
         $moviesQuery = "INSERT INTO movies " .
-        "(title, type, year, country, actors, duration, waiting)" .
-        " VALUES (?, ?, ?, ?, ?, ?, ?)";
+            "(title, type, year, country, actors, duration, waiting)" .
+            " VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $db->prepare($moviesQuery);
         $stmt->bind_param(
@@ -92,7 +92,6 @@ function newMoviesRequest()
     }
     return $paragrap;
 }
-
 
 ?>
 

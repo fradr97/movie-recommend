@@ -93,13 +93,13 @@ function getMoviesResults()
                     $result = '<li onclick="openMovieUrl(\'' . $row['title'] . '\')">' .
                         '<span>' . $row['title'] . '</span>' .
                         '<span>Tipo: ' . $row['type'];
-                    
-                        if ($row['seasons'] != null && $row['episodes'] != null) {
-                            $result = $result . ' - Stagioni: ' . $row['seasons'] .
-                                ' - Episodi per stagione: ' . $row['episodes'];
-                        }
-                        
-                        echo $result . '<br />Anno: ' . $row['year'] . ' - Durata: ' .
+
+                    if ($row['seasons'] != null && $row['episodes'] != null) {
+                        $result = $result . ' - Stagioni: ' . $row['seasons'] .
+                            ' - Episodi per stagione: ' . $row['episodes'];
+                    }
+
+                    echo $result . '<br />Anno: ' . $row['year'] . ' - Durata: ' .
                         $row['duration'] . ' min circa</span>' .
                         '</li>';
                 }

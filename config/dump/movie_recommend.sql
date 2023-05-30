@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 25, 2023 alle 14:26
+-- Creato il: Mag 30, 2023 alle 14:30
 -- Versione del server: 10.4.22-MariaDB
 -- Versione PHP: 7.4.27
 
@@ -46,6 +46,9 @@ CREATE TABLE `movies` (
   `year` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
   `actors` varchar(300) NOT NULL,
+  `duration` int(5) NOT NULL,
+  `seasons` int(5) DEFAULT NULL,
+  `episodes` int(5) DEFAULT NULL,
   `waiting` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
